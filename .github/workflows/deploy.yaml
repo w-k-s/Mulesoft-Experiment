@@ -1,0 +1,33 @@
+name: "Deploy"
+on:
+  workflow_dispatch:
+    branches:
+      - master
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment Name'
+        required: true
+        options:
+        - Sandbox
+        - Design
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      ANYPOINT_USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
+      ANYPOINT_PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
+      ANYPOINT_APPLICATION_NAME: "mulesoft-experiment"
+      ANYPOINT_ENVIRONMENT: ${{ github.event.inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+          cache: maven
+      - name: Deploy
+        run: mvn clean package deploy -DmuleDeploy
