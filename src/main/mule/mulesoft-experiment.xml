@@ -4,9 +4,6 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="cead1b81-c84d-44fe-a2b7-0d5a40d00c3c">
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
 	<flow name="mulesoft-experimentFlow" doc:id="6821b8d3-824c-4890-b4dc-53e0fbc08b6f" >
 		<http:listener doc:name="Listener" doc:id="5a990fe0-db41-425d-b353-535937b98830" config-ref="HTTP_Listener_config" path="/hellomule"/>
 		<set-payload value="Hello" doc:name="Set Payload" doc:id="1790a24b-9528-4eb2-bcf9-d4ba37f06e0a" />
