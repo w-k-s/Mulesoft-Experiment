@@ -30,4 +30,4 @@ jobs:
           distribution: "adopt"
           cache: maven
       - name: Deploy
-        run: mvn clean package deploy -DmuleDeploy
+        run: mvn -s .github/settings.xml clean package deploy -DmuleDeploy
