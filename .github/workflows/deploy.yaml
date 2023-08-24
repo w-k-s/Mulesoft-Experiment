@@ -11,6 +11,13 @@ on:
         options:
         - Sandbox
         - Design
+      app_environment:
+        type: choice
+        description: 'Application Environment'
+        required: true
+        options:
+        - dev
+        - local
 
 jobs:
   deploy:
@@ -20,6 +27,8 @@ jobs:
       ANYPOINT_PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
       ANYPOINT_APPLICATION_NAME: "mulesoft-experiment"
       ANYPOINT_ENVIRONMENT: ${{ github.event.inputs.environment }}
+      APPLICATION_ENVIRONMENT: ${{ github.event.inputs.app_environment }}
+      SECURE_KEY: ${{ secrets.SECURE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3

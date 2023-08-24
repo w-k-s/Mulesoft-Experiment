@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+<mule
+	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
 	<http:listener-config name="HTTP_Listener_config"
 		doc:name="HTTP Listener config"
 		doc:id="37c065e0-3491-498b-8904-c9792a80ec62">
-		<http:listener-connection host="${http.listener.host}"
-			port="${http.listener.port}" />
+		<http:listener-connection
+			host="${http.listener.host}" port="${http.listener.port}" />
 	</http:listener-config>
-	<configuration-properties doc:name="Configuration properties" doc:id="af915e78-3426-4dd0-8720-66726131f026" file="${env}.yaml" />
-	<global-property doc:name="Global Property" doc:id="a1c7ef2b-8972-4600-9ac7-4c26dd8980e8" name="env" value="local" />
+	<configuration-properties
+		doc:name="Configuration properties"
+		doc:id="af915e78-3426-4dd0-8720-66726131f026" file="${env}.yaml" />
+		<!-- use global properties as a way to define default values for configuration properties. System and environment properties with the same name as a global property will override that global property. -->
+	<global-property doc:name="Global Property"
+		doc:id="a1c7ef2b-8972-4600-9ac7-4c26dd8980e8" name="env" value="local" />
+	<secure-properties:config
+		name="Secure_Properties_Config" doc:name="Secure Properties Config"
+		doc:id="109963b0-aaee-4a71-af92-5a539b5ed4b1"
+		file="${env}.secure.yaml" key="${secure.key}">
+		<secure-properties:encrypt
+			algorithm="Blowfish" />
+	</secure-properties:config>
 </mule>

@@ -31,6 +31,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
+						<!-- https://docs.mulesoft.com/mule-runtime/4.4/deploy-to-cloudhub#configure-the-cloudhub-deployment-strategy -->
 						<muleVersion>4.4.0</muleVersion>
 						<username>${env.ANYPOINT_USERNAME}</username>
 						<password>${env.ANYPOINT_PASSWORD}</password>
@@ -41,6 +42,8 @@
 						<properties>
 							<maven.compiler.target>1.8</maven.compiler.target>
 							<maven.compiler.source>1.8</maven.compiler.source>
+							<env>${env.APPLICATION_ENV}</env>
+							<secure.key>${env.SECURE_KEY}</secure.key>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
@@ -59,6 +62,12 @@
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-sockets-connector</artifactId>
 			<version>1.2.3</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<version>1.2.5</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
