@@ -31,7 +31,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
-						<muleVersion>4.3.0</muleVersion>
+						<muleVersion>4.4.0</muleVersion>
 						<username>${env.ANYPOINT_USERNAME}</username>
 						<password>${env.ANYPOINT_PASSWORD}</password>
 						<applicationName>${env.ANYPOINT_APPLICATION_NAME}</applicationName>
