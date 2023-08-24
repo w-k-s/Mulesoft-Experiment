@@ -30,4 +30,4 @@ jobs:
           distribution: "adopt"
           cache: maven
       - name: Deploy
-        run: mvn -B -s .github/settings.xml clean package deploy -DmuleDeploy
+        run: mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -B -s .github/settings.xml clean deploy -DmuleDeploy
