@@ -44,6 +44,8 @@
 							<maven.compiler.source>1.8</maven.compiler.source>
 							<env>${env.APPLICATION_ENVIRONMENT}</env>
 							<secure.key>${env.SECURE_KEY}</secure.key>
+							<anypoint.platform.client_id>${env.ANYPOINT_CLIENT_ID}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${env.ANYPOINT_CLIENT_SECRET}</anypoint.platform.client_secret>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>

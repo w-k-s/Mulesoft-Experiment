@@ -1,0 +1,8 @@
+http:
+  listener:
+    host: "0.0.0.0"
+    port: "8081"
+
+# If you had more environments in API Manager like QA or PROD, your API ID would be different for each one
+api:
+  id: "18924004"

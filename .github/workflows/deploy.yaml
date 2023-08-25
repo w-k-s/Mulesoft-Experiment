@@ -21,10 +21,15 @@ on:
 
 jobs:
   deploy:
+    defaults:
+      run:
+        working-directory: mulesoft-experiment
     runs-on: ubuntu-latest
     env:
       ANYPOINT_USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
       ANYPOINT_PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
+      ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
+      ANYPOINT_CLIENT_SECRET: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
       ANYPOINT_APPLICATION_NAME: "mulesoft-experiment"
       ANYPOINT_ENVIRONMENT: ${{ github.event.inputs.environment }}
       APPLICATION_ENVIRONMENT: ${{ github.event.inputs.app_environment }}
