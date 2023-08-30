@@ -6,3 +6,8 @@ http:
 # If you had more environments in API Manager like QA or PROD, your API ID would be different for each one
 api:
   id: "18924004"
+ 
+db:
+  host: "congo.c3w6upfzlwwe.us-west-1.rds.amazonaws.com"
+  port: "3306"
+  name: "congo"

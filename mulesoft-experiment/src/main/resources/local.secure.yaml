@@ -1,3 +1,7 @@
 example:
   username: "![wlA3Sf/c/xAT8qXtb/N1ig==]"
   password: "![PCLhEHxQXuDxmtorchMq+A==]"
+
+db:
+  user: "![Y1+ofGYYw0nRNeCXZaGJYw==]"
+  password: "![Y1+ofGYYw0nRNeCXZaGJYw==]"

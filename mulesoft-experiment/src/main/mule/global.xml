@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
 	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
 	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd 
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
 http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
@@ -19,9 +21,14 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 	<configuration-properties
 		doc:name="Configuration properties"
 		doc:id="af915e78-3426-4dd0-8720-66726131f026" file="${env}.yaml" />
-		<!-- use global properties as a way to define default values for configuration properties. System and environment properties with the same name as a global property will override that global property. -->
+	<!-- use global properties as a way to define default values for configuration 
+		properties. System and environment properties with the same name as a global 
+		property will override that global property. -->
 	<global-property doc:name="Global Property"
 		doc:id="a1c7ef2b-8972-4600-9ac7-4c26dd8980e8" name="env" value="local" />
+	<global-property doc:name="Global Property"
+		doc:id="5da0a32a-e7f1-439b-b343-d14d69a328be" name="secure.key"
+		value="MyMuleSoftKey" />
 	<secure-properties:config
 		name="Secure_Properties_Config" doc:name="Secure Properties Config"
 		doc:id="109963b0-aaee-4a71-af92-5a539b5ed4b1"
@@ -29,5 +36,14 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 		<secure-properties:encrypt
 			algorithm="Blowfish" />
 	</secure-properties:config>
-	<api-gateway:autodiscovery apiId="${api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="e7122c7e-736c-4185-a1da-afbc7face85b" flowRef="mulesoft-experimentFlow" />
+	<api-gateway:autodiscovery apiId="${api.id}"
+		ignoreBasePath="true" doc:name="API Autodiscovery"
+		doc:id="e7122c7e-736c-4185-a1da-afbc7face85b"
+		flowRef="mulesoft-experimentFlow" />
+	<db:config name="Database_Config" doc:name="Database Config"
+		doc:id="b7e5a9fc-440a-40cb-89ea-366f80bced50">
+		<db:my-sql-connection host="${db.host}"
+			port="${db.port}" user="${secure::db.user}" password="${secure::db.password}"
+			database="${db.name}" />
+	</db:config>
 </mule>

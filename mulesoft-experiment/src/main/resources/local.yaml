@@ -5,3 +5,9 @@ http:
  
 api:
   id: "18924004"
+  
+db:
+  config: "Database_Config"
+  host: "congo.c3w6upfzlwwe.us-west-1.rds.amazonaws.com"
+  port: "3306"
+  name: "congo"
